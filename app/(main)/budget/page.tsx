@@ -95,7 +95,9 @@ export default async function BudgetPage() {
                 itemId={item.id}
                 categoryName={item.category?.name ?? "-"}
                 budgetAmount={item.amount}
-                spent={spentByCategory.get(item.category_id) ?? 0}
+                spent={
+                  spentByCategory.get(item.category_id) ?? 0
+                }
               />
             ))}
           </div>
