@@ -10,6 +10,10 @@
     color-scheme: dark;
     --tw-bg-opacity: 1;
   }
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
   body {
     @apply bg-background text-foreground;
   }

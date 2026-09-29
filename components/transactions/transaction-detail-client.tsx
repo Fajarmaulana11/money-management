@@ -42,9 +42,9 @@ export function TransactionDetailClient({ transaction }: { transaction: Transact
       </Link>
 
       <Card>
-        <CardContent className="flex flex-col gap-4 p-6">
+        <CardContent className="flex flex-col gap-4 p-5 sm:p-6">
           <div className="text-center">
-            <p className={`text-3xl font-semibold ${isTransfer ? "text-foreground" : isIncome ? "text-success" : "text-danger"}`}>
+            <p className={`break-words text-2xl font-semibold tabular-nums sm:text-3xl ${isTransfer ? "text-foreground" : isIncome ? "text-success" : "text-danger"}`}>
               {isTransfer ? "" : isIncome ? "+" : "-"}{formatCurrency(transaction.amount)}
             </p>
             <p className="mt-1 text-sm text-muted">{transaction.category?.name ?? (isTransfer ? "Transfer" : "-")}</p>
@@ -78,9 +78,9 @@ export function TransactionDetailClient({ transaction }: { transaction: Transact
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between">
-      <dt className="text-muted">{label}</dt>
-      <dd className="font-medium">{value}</dd>
+    <div className="flex items-start justify-between gap-4">
+      <dt className="shrink-0 text-muted">{label}</dt>
+      <dd className="min-w-0 break-words text-right font-medium">{value}</dd>
     </div>
   );
 }

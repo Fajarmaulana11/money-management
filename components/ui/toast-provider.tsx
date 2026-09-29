@@ -22,18 +22,18 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <ToastContext.Provider value={{ toast }}>
-      <ToastPrimitive.Provider swipeDirection="right">
+      <ToastPrimitive.Provider swipeDirection="up">
         {children}
         {toasts.map((t) => (
           <ToastPrimitive.Root
             key={t.id}
             className={
-              "rounded-md border p-4 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out " +
+              "rounded-md border bg-card p-4 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out " +
               (t.variant === "destructive"
-                ? "border-danger bg-danger/10"
+                ? "border-border border-l-4 border-l-danger"
                 : t.variant === "success"
-                ? "border-success bg-success/10"
-                : "border-border bg-card")
+                ? "border-border border-l-4 border-l-success"
+                : "border-border")
             }
           >
             <ToastPrimitive.Title className="text-sm font-medium">{t.title}</ToastPrimitive.Title>
@@ -42,7 +42,8 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             )}
           </ToastPrimitive.Root>
         ))}
-        <ToastPrimitive.Viewport className="fixed bottom-4 right-4 z-[100] flex w-80 flex-col gap-2 outline-none" />
+        {/* Mobile: di atas layar, lebar penuh (tidak menutupi bottom nav). Desktop: pojok kanan bawah. */}
+        <ToastPrimitive.Viewport className="fixed inset-x-4 top-[calc(0.75rem+env(safe-area-inset-top))] z-[100] flex flex-col gap-2 outline-none md:inset-x-auto md:bottom-4 md:right-4 md:top-auto md:w-80" />
       </ToastPrimitive.Provider>
     </ToastContext.Provider>
   );

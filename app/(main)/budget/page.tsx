@@ -73,7 +73,7 @@ export default async function BudgetPage() {
       <Header fullName={profile?.full_name ?? "User"} />
 
       <div className="px-4 pb-8 md:px-8">
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-4 flex items-center justify-between gap-3">
           <h1 className="text-xl font-semibold">Anggaran Bulan Ini</h1>
 
           <AddBudgetDialog

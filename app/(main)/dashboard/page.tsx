@@ -54,7 +54,7 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <Header fullName={profile?.full_name ?? "User"} />
+      <Header fullName={profile?.full_name ?? "User"} showOnMobile />
       <div className="flex flex-col gap-4 px-4 pb-8 md:px-8">
         <BalanceCards totalBalance={totalBalance} monthlyIncome={monthlyIncome} monthlyExpense={monthlyExpense} netCashFlow={netCashFlow} />
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">

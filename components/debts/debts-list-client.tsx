@@ -32,12 +32,12 @@ export function DebtsListClient({ initialDebts }: { initialDebts: Debt[] }) {
           return (
             <Card key={d.id}>
               <CardContent className="flex flex-col gap-2 p-4">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium">{d.person_name}</p>
-                  <span className={`text-xs font-medium ${STATUS_COLOR[d.status]}`}>{STATUS_LABEL[d.status]}</span>
+                <div className="flex items-center justify-between gap-2">
+                  <p className="min-w-0 truncate text-sm font-medium">{d.person_name}</p>
+                  <span className={`shrink-0 text-xs font-medium ${STATUS_COLOR[d.status]}`}>{STATUS_LABEL[d.status]}</span>
                 </div>
                 <p className="text-lg font-semibold">{formatCurrency(d.amount)}</p>
-                <div className="flex justify-between text-xs text-muted">
+                <div className="flex flex-wrap justify-between gap-x-3 gap-y-1 text-xs text-muted">
                   <span>Dibayar: {formatCurrency(d.total_paid ?? 0)}</span>
                   <span>Sisa: {formatCurrency(Math.max(remaining, 0))}</span>
                 </div>
@@ -59,7 +59,7 @@ export function DebtsListClient({ initialDebts }: { initialDebts: Debt[] }) {
         <Button size="sm" onClick={() => setAddOpen(true)}><Plus className="h-4 w-4" /> Tambah</Button>
       </div>
       <Tabs defaultValue="i_owe">
-        <TabsList className="grid w-full max-w-sm grid-cols-2">
+        <TabsList className="grid w-full grid-cols-2 sm:max-w-sm">
           <TabsTrigger value="i_owe">Saya Berhutang</TabsTrigger>
           <TabsTrigger value="owed_to_me">Piutang Saya</TabsTrigger>
         </TabsList>

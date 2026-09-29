@@ -20,10 +20,10 @@ export default async function AccountsPage() {
     <div>
       <Header fullName={profile?.full_name ?? "User"} />
       <div className="px-4 pb-8 md:px-8">
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-4 flex items-center justify-between gap-3">
           <div>
             <h1 className="text-xl font-semibold">Rekening</h1>
-            <p className="text-sm text-muted">Total Aset: <span className="font-semibold text-foreground">{formatCurrency(totalAssets)}</span></p>
+            <p className="text-sm text-muted">Total Aset: <span className="font-semibold tabular-nums text-foreground">{formatCurrency(totalAssets)}</span></p>
           </div>
           <AddAccountDialog />
         </div>

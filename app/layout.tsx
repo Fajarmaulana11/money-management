@@ -6,11 +6,13 @@ export const metadata: Metadata = {
   title: "Monefy Personal",
   description: "Kelola keuangan pribadi Anda secara terstruktur",
   manifest: "/manifest.json",
+  appleWebApp: { capable: true, title: "Monefy", statusBarStyle: "default" },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
   themeColor: "#2563EB",
 };
 

@@ -55,17 +55,18 @@ export function RecurringListClient({
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           {items.map((item) => (
             <Card key={item.id}>
-              <CardContent className="flex items-center justify-between p-4">
-                <div>
-                  <p className="text-sm font-medium">{item.description || item.category?.name}</p>
+              <CardContent className="flex items-center justify-between gap-3 p-4">
+                <div className={`min-w-0 flex-1 ${item.is_active ? "" : "opacity-60"}`}>
+                  <p className="truncate text-sm font-medium">{item.description || item.category?.name}</p>
                   <p className="text-xs text-muted">
-                    {FREQ_LABEL[item.frequency]} · Berikutnya {formatDate(item.next_execution_date)} · {item.account?.name}
+                    {FREQ_LABEL[item.frequency]} · {item.account?.name}
                   </p>
-                  <p className={`text-sm font-semibold ${item.type === "income" ? "text-success" : "text-danger"}`}>
+                  <p className="text-xs text-muted">Berikutnya {formatDate(item.next_execution_date)}</p>
+                  <p className={`mt-1 text-sm font-semibold tabular-nums ${item.type === "income" ? "text-success" : "text-danger"}`}>
                     {item.type === "income" ? "+" : "-"}{formatCurrency(item.amount)}
                   </p>
                 </div>
-                <div className="flex gap-1">
+                <div className="flex shrink-0 gap-1">
                   <Button variant="ghost" size="icon" onClick={() => toggleActive(item.id, item.is_active)} title={item.is_active ? "Pause" : "Resume"}>
                     {item.is_active ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
                   </Button>

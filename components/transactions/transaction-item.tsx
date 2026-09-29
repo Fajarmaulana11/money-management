@@ -12,25 +12,25 @@ export function TransactionItem({ transaction }: { transaction: Transaction }) {
   return (
     <Link
       href={`/transactions/${transaction.id}`}
-      className="flex items-center justify-between rounded-md px-2 py-2.5 hover:bg-background"
+      className="flex items-center justify-between gap-3 rounded-md px-2 py-2.5 hover:bg-background active:bg-background"
     >
-      <div className="flex items-center gap-3">
+      <div className="flex min-w-0 flex-1 items-center gap-3">
         <div
-          className="flex h-9 w-9 items-center justify-center rounded-full"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
           style={{ backgroundColor: (transaction.category?.color ?? "#94A3B8") + "20" }}
         >
           <Icon className="h-4 w-4" style={{ color: transaction.category?.color ?? "#94A3B8" }} />
         </div>
-        <div>
-          <p className="text-sm font-medium">
+        <div className="min-w-0">
+          <p className="truncate text-sm font-medium">
             {transaction.description || transaction.category?.name || (isTransfer ? "Transfer" : "Transaksi")}
           </p>
-          <p className="text-xs text-muted">
+          <p className="truncate text-xs text-muted">
             {transaction.account?.name} · {formatDate(transaction.transaction_date)}
           </p>
         </div>
       </div>
-      <p className={`text-sm font-semibold ${isTransfer ? "text-foreground" : isIncome ? "text-success" : "text-danger"}`}>
+      <p className={`shrink-0 whitespace-nowrap text-sm font-semibold tabular-nums ${isTransfer ? "text-foreground" : isIncome ? "text-success" : "text-danger"}`}>
         {isTransfer ? "" : isIncome ? "+" : "-"}{formatCurrency(transaction.amount)}
       </p>
     </Link>

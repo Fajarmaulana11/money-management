@@ -9,9 +9,9 @@ export default async function MainLayout({ children }: { children: React.ReactNo
   if (!user) redirect("/login");
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-dvh">
       <Sidebar />
-      <div className="flex-1 pb-20 md:pb-0">
+      <div className="min-w-0 flex-1 pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-0">
         <div className="mx-auto max-w-[1400px]">{children}</div>
       </div>
       <BottomNav />
